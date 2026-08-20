@@ -2,12 +2,20 @@
 
 ## Reporting a vulnerability
 
-**Do not open a public issue.** Use GitHub private vulnerability reporting on this repository, or
-email `security@litmus64.com`.
+**Do not open a public issue.**
+
+**Use [GitHub private vulnerability reporting](https://github.com/prabhu-gopal/litmus64/security/advisories/new)
+on this repository.** That is the primary and currently the *only* working channel — it is private,
+needs no setup on our side, and threads directly to a coordinated advisory.
+
+> **Note:** `security@litmus64.com` becomes a second channel once the domain is registered
+> (ADR-0018). It does **not** resolve yet, so do not use it — mail sent there will bounce. We would
+> rather say that plainly than publish an address that silently swallows a security report. The same
+> applies to `conduct@` and `trademark@` elsewhere in this repository.
 
 Include: version (`lx --version`), platform, sandbox tier in use, and a reproducer if you have one.
-If the finding involves untrusted-code execution or sandbox escape, say so in the subject — it is
-routed first.
+If the finding involves untrusted-code execution or sandbox escape, say so in the title — it is
+triaged first.
 
 ## Response SLA
 

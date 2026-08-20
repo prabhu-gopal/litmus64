@@ -36,4 +36,4 @@ a command name is the one mistake that would genuinely confuse users.
 - Use in domain names, product names, or company names.
 - Implying endorsement, affiliation, or certification we have not given.
 
-Questions: `trademark@litmus64.com`. We would rather answer a question than send a notice.
+Questions: open an issue, or `trademark@litmus64.com` once the domain resolves (not yet — ADR-0018). We would rather answer a question than send a notice.

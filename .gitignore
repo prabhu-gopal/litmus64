@@ -1,29 +1,75 @@
-# ── build ────────────────────────────────────────────────────────────────────
+# ─── build ───────────────────────────────────────────────────────────────────
 /target
 **/*.rs.bk
 *.bak
 *.orig
 *.rej
 
-# ── private planning documents — NEVER pushed ────────────────────────────────
-# Strategy, competitive analysis, licensing reasoning, launch sequence, commercial
-# boundaries. The public-safe engineering content is extracted into tracked files:
-# CODEBASE.md, docs/laws.md, docs/cli.md, DECISIONS.md, docs/adr/, spec/.
-# See docs/source/README.md.
+# ─── PRIVATE PLANNING DOCUMENTS — never pushed ───────────────────────────────
+# Strategy, competitive analysis, licensing reasoning, launch sequence,
+# commercial tier boundaries, full bibliography.
+# The public-safe engineering content is extracted into tracked files:
+#   CODEBASE.md · docs/laws.md · docs/cli.md · docs/why.md ·
+#   docs/enterprise.md · DECISIONS.md · docs/adr/ · spec/
+# See docs/source/README.md. Verify with:
+#   grep -rn "LITMUS64\.md" . --include="*.md" --include="*.rs" \
+#     | grep -v "^./target" | grep -v "^./docs/source/"     # must return nothing
 /docs/source/
 
-# ── generated at runtime by the tool itself ──────────────────────────────────
-# Receipts for THIS repo are committed deliberately (examples/), but a contributor's
-# local scratch receipts are not.
+# Scratch space for anything not ready to be public. Safe by default:
+# create the directory, work in it, and nothing inside can be committed.
+/private/
+/notes/
+/drafts/
+/scratch/
+*.private.md
+*.draft.md
+*.WIP.md
+TODO.local.md
+
+# ─── SECRETS — belt and braces ───────────────────────────────────────────────
+# Nothing here should ever exist in this repo, but the cost of listing them is
+# zero and the cost of one leaked key on a public repo is a rotation scramble.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+*.keystore
+credentials.json
+service-account*.json
+.netrc
+.npmrc
+.pypirc
+*.token
+secrets.*
+!secrets.example.*
+.anthropic/
+.aws/
+.gcloud/
+
+# ─── generated at runtime by the tool itself ─────────────────────────────────
+# Receipts for THIS repo are committed deliberately (examples/), but a
+# contributor's local scratch receipts and cache are not.
 .litmus64/receipts/
 .litmus64/cache/
+.litmus64/gen/
+lx-audit-*.html
+lx-audit-*.json
 
-# ── benchmark corpora are fetched, never vendored (xtask corpus sync) ────────
+# ─── benchmark corpora are fetched, never vendored (xtask corpus sync) ───────
 /bench/corpora/**/checkout/
 
-# ── editors / OS ─────────────────────────────────────────────────────────────
+# ─── editors / OS ────────────────────────────────────────────────────────────
 .DS_Store
+Thumbs.db
 .idea/
 .vscode/*
 !.vscode/settings.json.example
 *.swp
+*.swo
+.claude/settings.local.json
