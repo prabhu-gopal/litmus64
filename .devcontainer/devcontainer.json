@@ -1,0 +1,5 @@
+{
+  "name": "litmus64",
+  "image": "mcr.microsoft.com/devcontainers/rust:1",
+  "postCreateCommand": "bash .devcontainer/setup.sh"
+}

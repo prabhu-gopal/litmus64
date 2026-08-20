@@ -1,0 +1,4 @@
+# Pinned toolchain. Reproducibility starts here (CODEBASE.md §13).
+[toolchain]
+channel    = "1.85.0"
+components = ["rustfmt", "clippy"]

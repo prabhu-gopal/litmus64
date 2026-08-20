@@ -1,0 +1,27 @@
+# security — daily. See THREATS.md and docs/enterprise.md.
+name: security
+on:
+  schedule: [{ cron: "0 6 * * *" }]
+  pull_request: {}
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  todo:
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: implement:
+      #   cargo-audit / OSV            known advisories
+      #   cargo-deny                   licenses, bans, duplicate versions
+      #   dependency review            new deps on PRs
+      #   CodeQL + Semgrep             on OUR OWN source
+      #   injection corpus             bench/corpora/injection — ZERO verdict
+      #                                changes permitted. Release-blocking.
+      #   sandbox escape suite         untrusted-diff containment
+      #   OpenSSF Scorecard            publish to the README badge and FAIL on a
+      #                                regression. A verification project with a
+      #                                mediocre Scorecard is self-refuting.
+      - run: echo "TODO: implement security"

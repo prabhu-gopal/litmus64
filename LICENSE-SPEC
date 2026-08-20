@@ -1,0 +1,35 @@
+Litmus64 specification and documentation prose
+Copyright 2026 Prabhu Gopal
+
+This work — the prose in spec/ and docs/, excluding code and schemas — is licensed
+under the Creative Commons Attribution 4.0 International License (CC-BY-4.0).
+
+  Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+  Full legal code:        https://creativecommons.org/licenses/by/4.0/legalcode
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit, link to the license, and
+indicate if changes were made.
+
+
+ADDITIONAL ROYALTY-FREE IMPLEMENTATION GRANT
+
+Beyond the rights granted by CC-BY-4.0, and to remove any doubt for implementers:
+
+  We grant to any person a perpetual, worldwide, non-exclusive, no-charge,
+  royalty-free, irrevocable license to implement, use, and distribute
+  implementations of the Litmus64 specification, including the Change Receipt
+  format, the verdict algebra, the risk model, and the plugin contract, for any
+  purpose, commercial or non-commercial, without requiring permission from or
+  attribution to us in the implementation itself.
+
+  This grant explicitly extends to competing and commercial implementations.
+
+Why this grant exists, stated plainly: a specification that competitors cannot
+implement is not a specification, and verification that requires our permission
+is worthless. If you need our permission to check a receipt, the receipt has no
+value. See LICENSING.md, which is normative, and docs/enterprise.md.
+
+Note that the code, JSON schemas, and conformance fixtures under spec/ are
+licensed under Apache-2.0 (see LICENSE-APACHE), not CC-BY-4.0. This file covers
+prose only.

@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: FSL-1.1-ALv2
+# Tier T1 — see LICENSING.md (that table is NORMATIVE) and DECISIONS.md
+[package]
+name = "lx-audit"
+description = "Retroactive receipts over git history; verification-debt reporting (ADR-0016)."
+version.workspace      = true
+edition.workspace      = true
+rust-version.workspace = true
+license                = "FSL-1.1-ALv2"
+repository.workspace   = true
+
+[dependencies]
+lx-types = { workspace = true }
+lx-graph = { workspace = true }
+lx-classify = { workspace = true }
+lx-oblig = { workspace = true }
+lx-receipt = { workspace = true }
+lx-render = { workspace = true }
+
+[lints]
+workspace = true

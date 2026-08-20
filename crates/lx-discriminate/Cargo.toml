@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: FSL-1.1-ALv2
+# Tier T2 — see LICENSING.md (that table is NORMATIVE) and DECISIONS.md
+[package]
+name = "lx-discriminate"
+description = "The M1 discrimination filter: keep only artifacts that distinguish BASE from HEAD."
+version.workspace      = true
+edition.workspace      = true
+rust-version.workspace = true
+license                = "FSL-1.1-ALv2"
+repository.workspace   = true
+
+[dependencies]
+lx-types = { workspace = true }
+lx-exec = { workspace = true }
+
+[lints]
+workspace = true

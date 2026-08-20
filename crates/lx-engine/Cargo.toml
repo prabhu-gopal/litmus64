@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: FSL-1.1-ALv2
+# Tier T3 — see LICENSING.md (that table is NORMATIVE) and DECISIONS.md
+[package]
+name = "lx-engine"
+description = "Orchestration: the eleven stages wired together."
+version.workspace      = true
+edition.workspace      = true
+rust-version.workspace = true
+license                = "FSL-1.1-ALv2"
+repository.workspace   = true
+
+[dependencies]
+lx-types = { workspace = true }
+lx-receipt = { workspace = true }
+lx-verdict = { workspace = true }
+lx-policy = { workspace = true }
+lx-graph = { workspace = true }
+lx-classify = { workspace = true }
+lx-oblig = { workspace = true }
+lx-ledger = { workspace = true }
+lx-plan = { workspace = true }
+lx-sandbox = { workspace = true }
+lx-exec = { workspace = true }
+lx-discriminate = { workspace = true }
+lx-attack = { workspace = true }
+lx-llm = { workspace = true }
+lx-triage = { workspace = true }
+lx-cache = { workspace = true }
+lx-sign = { workspace = true }
+lx-plugin = { workspace = true }
+lx-capability = { workspace = true }
+lx-invariant = { workspace = true }
+lx-render = { workspace = true }
+
+[lints]
+workspace = true

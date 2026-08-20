@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: FSL-1.1-ALv2
+# Tier T2 — see LICENSING.md (that table is NORMATIVE) and DECISIONS.md
+[package]
+name = "lx-plan"
+description = "Budget knapsack, escalation ladder, task DAG. Deterministic."
+version.workspace      = true
+edition.workspace      = true
+rust-version.workspace = true
+license                = "FSL-1.1-ALv2"
+repository.workspace   = true
+
+[dependencies]
+lx-types = { workspace = true }
+lx-policy = { workspace = true }
+lx-capability = { workspace = true }
+
+[lints]
+workspace = true

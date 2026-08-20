@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: Apache-2.0
+# Tier T0 — see LICENSING.md (that table is NORMATIVE) and DECISIONS.md
+[package]
+name = "lx-verify"
+description = "The free, independent receipt verifier. Apache-2.0 subgraph root."
+version.workspace      = true
+edition.workspace      = true
+rust-version.workspace = true
+license                = "Apache-2.0"
+repository.workspace   = true
+
+[dependencies]
+lx-types = { workspace = true }
+lx-receipt = { workspace = true }
+lx-verdict = { workspace = true }
+lx-sign = { workspace = true }
+
+[lints]
+workspace = true

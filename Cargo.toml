@@ -1,0 +1,94 @@
+# SPDX-License-Identifier: FSL-1.1-ALv2
+# Workspace root. `[workspace.dependencies]` pins EVERYTHING — reproducibility starts here.
+[workspace]
+resolver = "2"
+members = [
+  "crates/lx-types",
+  "crates/lx-receipt",
+  "crates/lx-verdict",
+  "crates/lx-sign",
+  "crates/lx-verify",
+  "crates/lx-conformance",
+  "crates/lx-policy",
+  "crates/lx-cache",
+  "crates/lx-capability",
+  "crates/lx-graph",
+  "crates/lx-classify",
+  "crates/lx-oblig",
+  "crates/lx-ledger",
+  "crates/lx-render",
+  "crates/lx-sandbox",
+  "crates/lx-exec",
+  "crates/lx-discriminate",
+  "crates/lx-plugin",
+  "crates/lx-invariant",
+  "crates/lx-llm",
+  "crates/lx-plan",
+  "crates/lx-attack",
+  "crates/lx-audit",
+  "crates/lx-triage",
+  "crates/lx-engine",
+  "crates/lx-cli",
+  "crates/lx-mcp",
+  "bench/lx-bench",
+  "xtask",
+]
+
+[workspace.package]
+version      = "0.1.0"
+edition      = "2021"
+rust-version = "1.85"
+repository   = "https://github.com/prabhu-gopal/litmus64"
+
+[workspace.dependencies]
+# ── internal ────────────────────────────────────────────────────────────────
+lx-types = { path = "crates/lx-types", version = "0.1.0" }
+lx-receipt = { path = "crates/lx-receipt", version = "0.1.0" }
+lx-verdict = { path = "crates/lx-verdict", version = "0.1.0" }
+lx-sign = { path = "crates/lx-sign", version = "0.1.0" }
+lx-verify = { path = "crates/lx-verify", version = "0.1.0" }
+lx-conformance = { path = "crates/lx-conformance", version = "0.1.0" }
+lx-policy = { path = "crates/lx-policy", version = "0.1.0" }
+lx-cache = { path = "crates/lx-cache", version = "0.1.0" }
+lx-capability = { path = "crates/lx-capability", version = "0.1.0" }
+lx-graph = { path = "crates/lx-graph", version = "0.1.0" }
+lx-classify = { path = "crates/lx-classify", version = "0.1.0" }
+lx-oblig = { path = "crates/lx-oblig", version = "0.1.0" }
+lx-ledger = { path = "crates/lx-ledger", version = "0.1.0" }
+lx-render = { path = "crates/lx-render", version = "0.1.0" }
+lx-sandbox = { path = "crates/lx-sandbox", version = "0.1.0" }
+lx-exec = { path = "crates/lx-exec", version = "0.1.0" }
+lx-discriminate = { path = "crates/lx-discriminate", version = "0.1.0" }
+lx-plugin = { path = "crates/lx-plugin", version = "0.1.0" }
+lx-invariant = { path = "crates/lx-invariant", version = "0.1.0" }
+lx-llm = { path = "crates/lx-llm", version = "0.1.0" }
+lx-plan = { path = "crates/lx-plan", version = "0.1.0" }
+lx-attack = { path = "crates/lx-attack", version = "0.1.0" }
+lx-audit = { path = "crates/lx-audit", version = "0.1.0" }
+lx-triage = { path = "crates/lx-triage", version = "0.1.0" }
+lx-engine = { path = "crates/lx-engine", version = "0.1.0" }
+lx-cli = { path = "crates/lx-cli", version = "0.1.0" }
+lx-mcp = { path = "crates/lx-mcp", version = "0.1.0" }
+
+# ── external: pinned, justified in the PR that adds them (CODEBASE.md §13) ──
+# serde / serde_json / schemars   receipt types are the single source of schema truth
+# thiserror / miette              library errors / human-facing diagnostics
+# tokio / async-trait             stage orchestration
+# tracing / tracing-opentelemetry observability, one span per stage
+# clap                            lx-cli only
+# tree-sitter                     lx-graph
+# cedar-policy                    lx-policy
+# proptest / insta / trybuild     testing layers, CODEBASE.md §9
+
+[workspace.lints.rust]
+unsafe_code   = "forbid"
+missing_docs  = "warn"
+
+[workspace.lints.clippy]
+pedantic      = { level = "warn", priority = -1 }
+unwrap_used   = "warn"
+expect_used   = "warn"
+
+[profile.release]
+lto           = true
+codegen-units = 1

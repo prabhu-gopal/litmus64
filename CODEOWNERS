@@ -1,0 +1,6 @@
+# CODEOWNERS — two approvals required for these paths (MAINTAINERS.md)
+/spec/            @litmus64/spec
+/crates/lx-verdict/  @litmus64/core
+/crates/lx-sandbox/  @litmus64/security
+/crates/lx-llm/      @litmus64/security
+/crates/lx-exec/     @litmus64/core

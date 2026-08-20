@@ -1,0 +1,24 @@
+Litmus64
+Copyright 2026 Prabhu Gopal
+
+This product bundles source code under more than one license. The per-path tier
+table in LICENSING.md is NORMATIVE, and `cargo xtask license-check` fails CI if a
+file's SPDX header disagrees with it.
+
+  Apache-2.0 (LICENSE-APACHE) — the standard, and the free verifier:
+    spec/**  (schemas, conformance fixtures)
+    crates/lx-types/       crates/lx-receipt/     crates/lx-verdict/
+    crates/lx-sign/        crates/lx-verify/      crates/lx-conformance/
+    plugins/CONTRACT.md    client SDKs
+
+  CC-BY-4.0 + royalty-free implementation grant (LICENSE-SPEC) — prose:
+    spec/**.md             docs/**.md
+
+  FSL-1.1-ALv2 (LICENSE) — the engine. Converts to Apache-2.0 on the second
+  anniversary of each version's release. That date is never extended:
+    everything else
+
+The engine is Fair Source, not OSI-approved open source during its FSL term, and
+we do not describe it as open source. Internal and commercial use of your own
+code is permitted at any company size, with nothing to buy. Reselling the engine
+as a competing verification service is not.

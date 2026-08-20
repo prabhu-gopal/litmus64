@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: FSL-1.1-ALv2
+# Tier T1 — see LICENSING.md (that table is NORMATIVE) and DECISIONS.md
+[package]
+name = "lx-policy"
+description = "litmus64.yaml to typed policy; Cedar evaluation."
+version.workspace      = true
+edition.workspace      = true
+rust-version.workspace = true
+license                = "FSL-1.1-ALv2"
+repository.workspace   = true
+
+[dependencies]
+lx-types = { workspace = true }
+
+[lints]
+workspace = true

@@ -1,0 +1,33 @@
+# release — tag-triggered. See CODEBASE.md §10 and docs/enterprise.md.
+name: release
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  id-token: write        # Sigstore keyless / OIDC
+  attestations: write    # SLSA provenance
+
+jobs:
+  todo:
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: implement. Required steps, in order — every one is a procurement
+      # commitment in docs/enterprise.md, not an optional nicety:
+      #
+      #   1. cargo-dist  build the platform matrix (macOS x86_64+aarch64,
+      #                  Linux glibc+musl, Windows)
+      #   2. SBOM        emit BOTH CycloneDX and SPDX, sign, attach to the release
+      #   3. provenance  actions/attest-build-provenance → SLSA Build L3
+      #   4. sign        Sigstore keyless; verifiable OFFLINE
+      #   5. publish     crates.io · Homebrew tap · PyPI wheels (maturin) ·
+      #                  npm shim · ghcr.io image · install.sh / install.ps1
+      #   6. SMOKE GATE  install from EVERY channel and run `lx demo`, then
+      #                  `lx verify` a known receipt. Only then mark the release
+      #                  latest. A lagging channel is worse than an absent one:
+      #                  a user who follows our own README and gets a stale
+      #                  binary has learned our tooling is unreliable, on the one
+      #                  dimension where that is unaffordable.
+      - run: echo "TODO: implement release"

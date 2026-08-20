@@ -1,0 +1,8 @@
+# dogfood — see CODEBASE.md §10 for the full step list.
+name: dogfood
+on: { workflow_dispatch: {} }
+jobs:
+  todo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "TODO: implement dogfood"

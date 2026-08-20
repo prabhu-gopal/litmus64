@@ -1,0 +1,17 @@
+# cargo-deny. Runs in CI on every PR (CODEBASE.md §10).
+[licenses]
+allow = ["Apache-2.0", "MIT", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Unicode-3.0", "Zlib"]
+confidence-threshold = 0.93
+# Note: our OWN crates are Apache-2.0 (Tier 1) or FSL-1.1-ALv2 (Tier 2). FSL is not listed here
+# because this file governs THIRD-PARTY dependencies. See LICENSING.md.
+
+[advisories]
+yanked = "deny"
+
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"

@@ -1,0 +1,29 @@
+# ── build ────────────────────────────────────────────────────────────────────
+/target
+**/*.rs.bk
+*.bak
+*.orig
+*.rej
+
+# ── private planning documents — NEVER pushed ────────────────────────────────
+# Strategy, competitive analysis, licensing reasoning, launch sequence, commercial
+# boundaries. The public-safe engineering content is extracted into tracked files:
+# CODEBASE.md, docs/laws.md, docs/cli.md, DECISIONS.md, docs/adr/, spec/.
+# See docs/source/README.md.
+/docs/source/
+
+# ── generated at runtime by the tool itself ──────────────────────────────────
+# Receipts for THIS repo are committed deliberately (examples/), but a contributor's
+# local scratch receipts are not.
+.litmus64/receipts/
+.litmus64/cache/
+
+# ── benchmark corpora are fetched, never vendored (xtask corpus sync) ────────
+/bench/corpora/**/checkout/
+
+# ── editors / OS ─────────────────────────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/settings.json.example
+*.swp

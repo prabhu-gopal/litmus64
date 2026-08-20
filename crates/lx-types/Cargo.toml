@@ -1,0 +1,15 @@
+# SPDX-License-Identifier: Apache-2.0
+# Tier T0 — see LICENSING.md (that table is NORMATIVE) and DECISIONS.md
+[package]
+name = "lx-types"
+description = "Leaf domain types: ids, digests, Untrusted<T>, Capability, ObligationStatus."
+version.workspace      = true
+edition.workspace      = true
+rust-version.workspace = true
+license                = "Apache-2.0"
+repository.workspace   = true
+
+[dependencies]
+
+[lints]
+workspace = true
