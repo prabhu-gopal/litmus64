@@ -9,7 +9,7 @@ mistakes a compiling workspace for a working tool.
 
 | | State |
 |---|---|
-| **Design** | Complete and reviewed. 10 mechanisms, 14 laws, 6 structural decisions, 9 ADRs |
+| **Design** | Complete and reviewed. 10 mechanisms, 14 laws, 7 structural decisions, 10 ADRs |
 | **Repository scaffolding** | 27 crates, correct dependency graph, license tiers machine-checkable, `cargo build --workspace` passes with 0 warnings |
 | **Functional code** | **None.** Every crate is a doc comment and `unimplemented!()` |
 | **Tests** | None |

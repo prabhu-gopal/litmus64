@@ -14,6 +14,7 @@ carries the capability set that produced it; a missing mechanism appears as `unv
 | `schedule_search` | Rust (loom, shuttle); JVM post-1.0 (Fray) | Python, TypeScript, and Go have no systematic scheduler. Python's `blanket` replays one hand-written interleaving; Go has no loom equivalent |
 | Bounded model checking | Rust (Kani); C/C++ (CBMC) | Nothing comparable exists elsewhere |
 | Invariant mining | Python first (PEP 669); TS and Go planned | Daikon has front ends only for Java/C/C++/C#/Eiffel/Perl, so we build our own trace adapters per language |
+| Architecture fitness (`STRUCTURAL`) | Rust first | The module dependency graph is built on `lx-graph`, which parses one language on day one (D1). Other languages arrive through the plugin contract, not a new subsystem |
 
 Python, TypeScript, and Go get `schedule_replay` instead of `schedule_search`: we can reproduce a
 race deterministically from a recorded schedule, but **we cannot claim to have searched the space.**
@@ -45,6 +46,14 @@ Those are separate evidence kinds precisely so the weaker one can never masquera
   tier and a large, honest `unverified` block.
 - **Tests requiring live infrastructure** — differential execution is unavailable until a devcontainer
   service exists. `lx init --fix-devcontainer` will write one; if it cannot, it says so.
+- **Architecture fitness needs rules you declared.** We never decide what good architecture is, so a
+  repo with no `fitness.toml` gets `unverified: unformalizable` for the whole `STRUCTURAL` family —
+  zero rules, zero findings. The shipped default rule set is a starting point, not a substitute for
+  knowing your own module boundaries (`DECISIONS.md` D7, ADR-0020).
+- **Test-surface integrity is a diff, not a judgement.** A changed test file becomes a
+  `TEST_SURFACE_MODIFIED` obligation that the paired BASE run has to justify. We can tell you the
+  harness moved under the verdict; we cannot tell you the change was made in bad faith, and we do not
+  guess (ADR-0020).
 - **Flake floor.** ~25% of large-scale CI failures are flakes. We measure and label rather than blame,
   but a test that is flaky on BASE is excluded from attribution entirely, so it cannot support any
   conclusion at all.

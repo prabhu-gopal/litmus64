@@ -310,6 +310,61 @@ Scorecard and SBOM until an enterprise asks (by then it is a blocker in someone'
 
 ---
 
+## Decisions after revision 2
+
+Same bar as the six above: a decision enters this file only when evidence forced it and something was
+rejected to make room.
+
+---
+
+### D7 — Test-surface integrity and architecture fitness join the obligation model; live IDE simulation and deployment orchestration do not
+
+**ADR-0020.**
+
+**The evidence.** Four adjacent "AI safety" problems were proposed as one bundled feature. Two survive
+the project's own bar (a falsifiable fact we can hash, diff, or re-run — never an opinion); two do
+not:
+
+| Problem | Proposed fix | Passes the bar? |
+|---|---|---|
+| Agents tamper with the tests meant to check them (SWE-bench's evaluator trusts test output the agent's own patch can modify) | Cryptographic hash-lock of the test/fixture tree, pre- and post-run | **Yes** |
+| Agents introduce architectural anti-patterns that compile and pass tests | Declared, measurable fitness rules (cycles, layering, coupling delta) | **Yes** |
+| — proposed delivery for the above — | A live in-IDE simulator judging snippets before display | **No** — real-time, pre-display, necessarily opinionated |
+| Unreviewed AI commits reach production (Amazon, two outages in one week) | An in-house feature-flag orchestrator gated on staging approval | **No** — LaunchDarkly CodeControl, Statsig, and GrowthBook already occupy this, well-funded |
+
+**The decision.**
+
+1. **Test & Fixture Integrity Ledger.** Hash the test/fixture/harness tree before the agent runs,
+   diff it after. Any touched file becomes a new `TEST_SURFACE_MODIFIED` obligation in `lx-oblig` —
+   never an automatic fail (legitimate test fixes are routine), but never silent: it needs
+   `ConfirmedEvidence` from the paired BASE run or it surfaces as `unverified`/`violated`. Reuses the
+   sandbox and obligation machinery already specified (D3, ADR-0019); adds one digest type and one
+   obligation kind.
+2. **Architecture Fitness Obligations.** A new `STRUCTURAL` obligation family built from
+   repo-declared rules (`fitness.toml`) — dependency cycles, layering violations, API-surface churn,
+   coupling delta — evaluated at the same `lx check`/`lx audit` points everything else runs.
+   Undeclared repos get an honest `unverified: unformalizable`, the same pattern already used for
+   capability gaps. Litmus64 never decides what good architecture is; it decides whether the declared
+   architecture held.
+3. **No live IDE simulator.** Would judge code before any human or paired run sees it — opinion by
+   construction, which `NON-GOALS.md` already rules out. The underlying problem is still solved, by
+   (2), checked in the same batch/CI model as everything else.
+4. **No feature-flag orchestrator.** Litmus64 stays a receipt producer. If a deployment integration
+   ships later, it is a thin webhook letting an existing flag platform require a valid signed receipt
+   before promoting out of staging — an integration, not a product, and out of scope here.
+
+**Rejected: bundling all four as one feature.** Two of the four fail the falsifiable-fact bar that
+makes the receipt legible; forcing them in would have diluted the one sentence the whole project rests
+on. **Rejected: building a deployment orchestrator in-house.** Duplicates a mature, funded market for
+no differentiated benefit. **Rejected: hard-blocking any test-file change.** Would generate exactly
+the false-positive noise D3/T1 was built to make structurally impossible.
+
+**Cost accepted.** Architecture Fitness Obligations are real new work — a module dependency graph and
+a credible default `fitness.toml`, or day-one users get zero rules and zero value — and are Rust-first
+on day one, same honest gap as every other mechanism in the capability matrix.
+
+---
+
 ## Smaller corrections made in the same revision
 
 | # | Was | Now | Why |
