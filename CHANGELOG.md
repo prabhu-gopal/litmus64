@@ -10,6 +10,9 @@ receipt schema versioned independently in `spec/receipt-v0.1.md`.
 - `lx-verify` — the free, independent receipt verifier as a closed Apache-2.0 dependency subgraph.
 - `lx-capability` — probes toolchains and produces the M9 capability matrix.
 - `lx-rust` plugin (ADR-0011): the only 1.0 language with the full escalation ladder.
+- `plugins/template` reference plugin: a working, tested implementation of the subprocess JSON
+  contract (`capabilities`/`plan`/`run`), with a stdlib-only conformance suite covering
+  determinism, idempotency, graceful skips, and the cost-class tolerance rule.
 - `LEDGER_CONFLICT` obligation status and `lx ledger supersede` (M6).
 - `ConfirmedEvidence` — the M2 guarantee as a type rather than a runtime check.
 - `DECISIONS.md`, ADR-0011/0012/0013, `LICENSING.md`, `THREATS.md`, `NON-GOALS.md`,

@@ -4,6 +4,8 @@
 *.bak
 *.orig
 *.rej
+__pycache__/
+*.pyc
 
 # ─── PRIVATE PLANNING DOCUMENTS — never pushed ───────────────────────────────
 # Strategy, competitive analysis, licensing reasoning, launch sequence,
